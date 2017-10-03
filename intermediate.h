@@ -7,7 +7,7 @@
  */
 #pragma once
 
-#define INTERMEDIATE_SIZE 100000
+#define INTERMEDIATE_SIZE 10000000
 
 class Intermediate {
  private:

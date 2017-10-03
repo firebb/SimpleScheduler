@@ -28,7 +28,7 @@
 #include "intermediate.h"
 #include "scheduler.h"
 
-#define MAX_THREADS 4
+#define MAX_THREADS 16
 
 using namespace std;
 
@@ -147,7 +147,7 @@ void *worker_start(void *params) {
   int wid = worker->wid;
   while (true) {
     Stage *stage = worker->taskQueue.poll();
-    printf("op %d, batch %d\n", stage->op->opId, stage->batchId);
+    //printf("worker %d, op %d, batch %d\n", wid, stage->op->opId, stage->batchId);
     double *result = stage->execute();
     Intermediate *out = new Intermediate(result, stage->op->out.size(), wid);
     worker->resultQueue->push(out);

@@ -4,16 +4,19 @@ CFLAGS = -Wall -c $(DEBUG)
 LFLAGS = -Wall $(DEBUG) -lpthread
 OBJECTS = scheduler.o
 
-all: scheduler
+all: scheduler baseline
 
 scheduler: $(OBJECTS)
 	$(CC) $(LFLAGS) -o $@ $(OBJECTS)
 
-scheduler.o: scheduler.cpp task.h job.h execution_plan.h intermediate.h
+baseline: baseline.cpp
+	$(CC) -o $@ $<
+
+scheduler.o: scheduler.cpp job.h execution_plan.h intermediate.h
 	$(CC) $(CFLAGS) $<
 
 format: *.cpp *.h
 	clang-format -i -style=google *.cpp
 
 clean:
-	rm -f *.o scheduler
+	rm -f *.o scheduler baseline

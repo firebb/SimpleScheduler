@@ -40,9 +40,9 @@ class Operator {
       case Type::RANDOM:
         result = new double[INTERMEDIATE_SIZE];
         srand(time(NULL));
-        for (int i = 0; i < INTERMEDIATE_SIZE; i++) {
-          result[i] = rand() / (RAND_MAX / 1000);
-        }
+        //for (int i = 0; i < INTERMEDIATE_SIZE; i++) {
+        //  result[i] = rand() / (RAND_MAX / 1000);
+        //}
         break;
       case Type::DOUBLE:
         result = new double[INTERMEDIATE_SIZE];
